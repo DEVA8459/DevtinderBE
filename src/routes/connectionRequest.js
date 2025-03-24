@@ -5,6 +5,8 @@ const { userAuth } = require("../middlewares/auth");
 const ConnectionRequest = require("../models/connection");
 const User = require("../models/user");
 
+const sendEmail =  require("../utils/sendEmail")
+ 
 //intrested AND  ignored
 requestRouter.post(
   "/request/send/:status/:toUserId",
@@ -58,6 +60,9 @@ requestRouter.post(
 
       const data = await connectionRequest.save();
 
+      const emailRes =await sendEmail.run( "A new friend request from " + req.user.firstName,
+        req.user.firstName + " is " + status + " in " + toUser.firstName)
+    
       res.json({
         message: `${req.user.firstName} is ${status} in  ${toUser.firstName}`,
         data,

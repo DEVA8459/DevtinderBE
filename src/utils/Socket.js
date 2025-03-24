@@ -24,7 +24,7 @@ const initializedSocket = (server) => {
           const roomId = [loggedinUserid, targetedUserId].sort().join("_");
           //save messages with database
 
-          // TODO: Check if userId & targetUserId are friends
+          //TODO: Check if userId & targetUserId are friends
           //TODO: limit api call to 100 messages per call
           //TODO: improove security bug-auth in web socket 
           //TODO: show green symbol with online 
@@ -51,7 +51,7 @@ const initializedSocket = (server) => {
         } catch (err) {
           console.log(err)
         }
-        console.log(firstName + " " + text);
+       
       }
     );
     socket.on("disconnect", () => {});
